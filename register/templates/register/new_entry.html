@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova anotação</title>
+    <style>
+        .caixa {
+            border: 1px solid #ccc; /* Borda leve */
+            padding: 20px; /* Espaço interno */
+            margin: 20px; /* Espaço externo */
+            border-radius: 8px; /* Cantos arredondados */
+            background-color: #f9f9f9; /* Cor de fundo */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+        }
+    </style>
+</head>
+<body>
+    {% extends "register/base.html" %}
+    {% block content %}
+        <div class="caixa">
+            <p>
+                <a href="{% url 'topic' topic.id %}">{{topic}}</a>
+            </p>
+            <p>Adicione uma nova entrada: </p>
+            <form action="{% url 'new_entry' topic.id %}" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button name="submit">Adicionar</button>
+            </form>
+        </div>
+    {% endblock content %}
+</body>
+</html>

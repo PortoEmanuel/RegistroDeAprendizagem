@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tópicos</title>
+    <style>
+        .caixa {
+            border: 1px solid #ccc; /* Borda leve */
+            padding: 20px; /* Espaço interno */
+            margin: 20px; /* Espaço externo */
+            border-radius: 8px; /* Cantos arredondados */
+            background-color: #f9f9f9; /* Cor de fundo */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+        }
+    </style>
+</head>
+<body>
+    {% extends "register/base.html" %}
+    {% block content %}
+        <div class="caixa">
+            <p>Tópicos: </p>
+            <ul>
+                {% for topic in topics %}
+                    <li>
+                        <a href="{% url 'topic' topic.id %}">{{ topic }}</a>
+                        <p>
+                            <a href="{% url 'delete_topic' topic.id %}">
+                            Excluir
+                            </a>
+                        </p>
+                    </li>
+                {% empty %}
+                    <li>Não há topicos adicionados.</li>
+                {% endfor %}
+            </ul>
+            <a href="{% url 'new_topic' %}">Adicionar novos tópicos</a>
+        </div>
+    {% endblock content %}
+</body>
+</html>

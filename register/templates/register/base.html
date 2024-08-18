@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar Exemplo</title>
+    <style>
+        h1 {
+            text-align: center;
+            color: #222; 
+            font-size: 30px; 
+            font-weight: 400;
+            word-spacing: 1px; 
+            letter-spacing: 5px;
+        }
+
+        html, body {
+            height: 100%; /* Define a altura total para HTML e BODY */
+            margin: 0; /* Remove as margens padrão */
+            background-color: #babff8;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column; /* Organiza o conteúdo em uma coluna */
+        }
+
+        .navbar {
+            background-color: #696767;
+            padding: 10px;
+        }
+
+        .nav-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            padding: 5px 10px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .nav-links a:hover {
+            background-color: #555;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        .content {
+            flex: 1; /* Faz o conteúdo crescer e preencher o espaço disponível */
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 5px;
+        }
+        .git {
+            color: white;
+        }
+        .nome {
+            text-shadow: #222;
+
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Meus aprendizados</h1>
+        <nav class="navbar">
+            <ul class="nav-links">
+                <li><a href="{% url 'index' %}">Início</a></li>
+                <li><a href="{% url 'topics' %}">Tópicos</a></li>
+                {% if user.is_authenticated %}
+                    <li class="nome">Olá, {{ user.username }}</li>
+                    <li><a href="{% url 'logout' %}">Sair</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Entrar</a></li>
+                    <li><a href="{% url 'register' %}">Registrar</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    <main class="content">
+        {% block content %}{% endblock content %}
+    </main>
+    <footer id="final">Todos direitos reservados (<a class="git" href="https://github.com/PortoEmanuel">Emanuel Porto</a>)</footer>
+</body>
+</html>

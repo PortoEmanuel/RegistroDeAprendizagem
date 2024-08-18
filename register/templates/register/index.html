@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Registro de Aprendizagem</title>
+    <style>
+        .caixa {
+            border: 1px solid #ccc; /* Borda leve */
+            padding: 20px; /* Espaço interno */
+            margin: 20px; /* Espaço externo */
+            border-radius: 8px; /* Cantos arredondados */
+            background-color: #f9f9f9; /* Cor de fundo */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+        }
+    </style>
+</head>
+<body>
+    {% extends "register/base.html" %}
+    {% block content %}
+        <div class="caixa">
+            <p>Este é meu registro de aprendizagem.</p>
+            <p>Aqui é possível criar tópicos e escrever anotações.</p>        
+        </div>
+        <div class="caixa">
+            <h3>Você tem alguma sugestão? Entre em contato.</h3>
+            <p>
+                <ul>Email:
+                    <li>emanuelporto.py@gmail.com</li>
+                    GitHub:
+                    <li>github.com/PortoEmanuel</li>
+                    Canal no Discord:
+                    <li><a href="https://discord.gg/vnc47uJe">Programação e Tecnologia</a></li>
+                </ul>
+            </p>
+
+        </div>
+    {% endblock content %}
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <style>
+        .caixa {
+            border: 1px solid #ccc; /* Borda leve */
+            padding: 20px; /* Espaço interno */
+            margin: 20px; /* Espaço externo */
+            border-radius: 8px; /* Cantos arredondados */
+            background-color: #f9f9f9; /* Cor de fundo */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+        }
+    </style>
+</head>
+<body>
+    {% extends "register/base.html" %}
+    {% block content %}
+        <div class="caixa">
+            <form action="{% url 'register' %}" method="post">
+                {% csrf_token %}
+                <li>Sua senha não pode ser muito parecida com o resto das suas informações pessoais.</li>
+                <li>Sua senha precisa conter pelo menos 8 caracteres.</li>
+                <li>Sua senha não pode ser uma senha comumente utilizada.</li>
+                <li>Sua senha não pode ser inteiramente numérica.</li>
+                <p>Nome de usuário: {{ form.username }}</p>
+                <p>Digite a senha:  {{ form.password1 }}</p>
+                <p>Repita a senha:  {{ form.password2 }}</p>
+                <button name="submit">Registrar</button>
+                <input type="hidden" name="next" value="{% url 'index' %}"/>
+            </form>
+        </div>
+    {% endblock content %}
+</body>
+</html>
