@@ -7,8 +7,18 @@
 }
 
 .hero__left {
-    flex: 1;
+    flex:1;
 }
+
+.hero__left2 {
+    flex: 1;
+    display: flex;
+    padding-inline: 7rem;
+    padding-top: 3rem;
+    max-width: 1366px;
+    font-weight: 600;
+}
+
 .hero__up-text {
     color: #2eb1a3;
     text-transform: uppercase;
@@ -49,12 +59,16 @@
 }
 
 .hero__bt-ex {
-
-    background: linear-gradient(to right, #e8546b, #ac3cf6);
-    font-size: 1rem;
-    padding: 0.5em 2em;
+    background: linear-gradient(to right, #0e0c0c, #cd0808);
+    padding: 2px 2px;
     border-radius: 6px;
     color: #000000;
+
+}
+
+.hero__entry {
+
+    padding-inline: 1.25rem;
 }
 /* hero right */
 
@@ -66,5 +80,9 @@
 .hero__right {
     flex: 1;
 
+}
+
+.hero__right2 {
+    padding-inline: 1rem;
 }
 

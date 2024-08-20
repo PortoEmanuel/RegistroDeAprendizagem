@@ -101,3 +101,7 @@ def delete_entry(request, entry_id):
     
     context = {'entry': entry, 'topic': topic}
     return render(request, 'register/delete_entry.html', context)
+
+def descubra(request):
+    
+    return render(request, 'register/descubra.html')

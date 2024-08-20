@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Descubra</title>
     <link rel="stylesheet" href="/static/css/components/header.css">
     <link rel="stylesheet" href="/static/css/components/hero.css">
     <link rel="stylesheet" href="/static/css/style.css">
@@ -26,24 +26,26 @@
         </nav>
     </header>
     <section class="hero">
-        <div clas="hero__left">
-            {% if form.erros %}
-                <p>Seu login e senha estão incorretos. Por favor tente novamente!</p>
-            {% endif %}
-            <div>
-                <h3 class="hero__up-text">Login</h3>
-                <p class="hero__description">Entre com nome de usuário e senha.</p>
-                <div>
-                    <form action="{% url 'login' %}" method="post">
-                        {% csrf_token %}
-                        {{ form.as_p }}
-                        <button class="hero__btn" name="submit">Entrar</button>
-                        <input type="hidden" name="next" value="{% url 'index' %}"/>
-                    </form>
-                </div>
-            </div>
-    </div>
+        <div class="hero__right2">
+            <h4>Bem-vindo ao Diário Digital!</h4>
+            <p>Para começar a usar, você precisa primeiro criar um usuário.</p>
+            <p>Após o cadastro, você estará livre para criar tópicos e adicionar anotações conforme desejar.</p>
+            <p>Sinta-se à vontade para explorar e personalizar seu diário da maneira que preferir.</p>
+            <p>Estamos aqui para ajudar você a organizar suas ideias de forma eficiente!</p>
+            <p>Se deseja participar desse projeto, entre em contato.</p>
+            
+        </div>
     </section>
-
+    <section class="hero">
+        <div class="hero__right2">
+            <h1>Emanuel Porto:</h1>
+            <p>
+                5415353@proton.me
+            </p>
+            <p><a class="nav__a" href="https://discord.gg/vnc47uJe">Discord</a></p>
+            <p><a class="nav__a" href="https://x.com/dev_porto_py">X</a></p>
+            <p><a class="nav__a" href="https://github.com/PortoEmanuel">GitHub</a></p>
+        </div>
+    </section>
 </body>
 </html>

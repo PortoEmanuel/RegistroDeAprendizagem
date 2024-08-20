@@ -25,27 +25,27 @@
             </ul>
         </nav>
     </header>
-
-            <div>
-                <p>Tópicos:</p>
-                <ul>
-                    {% for topic in topics %}
-                        <li class="hero__up-text2">
-                            <a class="hero__up-text2" href="{% url 'topic' topic.id %}">{{ topic }}</a>
-                            <p>
-                                <button class="hero__btn-ex"><a href="{% url 'delete_topic' topic.id %}">Excluir</a></button>
-                            </p>
+        <div>
+            <p>Tópicos:</p>
+            <ul>
+                {% for topic in topics %}
+                    <li class="hero__up-text2">
+                        <a class="hero__up-text2" href="{% url 'topic' topic.id %}">{{ topic }}</a>
+                        <p>
+                            <button class="hero__btn-ex">
+                                <a class="nav__a"href="{% url 'delete_topic' topic.id %}">Excluir</a>
+                            </button>
+                        </p>
                         </li>
-                    {% empty %}
+                            {% empty %}
                         <li>Não há tópicos adicionados.</li>
-                    {% endfor %}
-                </ul>
-                <p>
-                    <button class="hero__btn"><a class="nav__a" href="{% url 'new_topic' %}">Adicionar novos tópicos</a></button>
-                </p>
-            </div>
-            <div class="container" >
-                <footer class="footer" ><p>Todos direitos reservados <a class="nav__a"  href="https://github.com/PortoEmanuel">Emanuel Porto</a></p></footer>
-            </div>
+                            {% endfor %}
+            </ul>
+            <p>
+                <button class="hero__btn">
+                    <a class="nav__a" href="{% url 'new_topic' %}">Adicionar novos tópicos</a>
+                </button>
+            </p>
+        </div>
 </body>
 </html>

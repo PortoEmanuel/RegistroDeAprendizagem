@@ -4,15 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Entrada</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/static/css/components/header.css">
+    <link rel="stylesheet" href="/static/css/components/hero.css">
+    <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
-    {% extends "register/base.html" %}
-    {% block content %}
+    <header class="header">
+        <span class="header__logo">Diário Digital</span>
+        <nav>
+            <ul class="nav__ul">
+                <li class="nav__li"><a class="nav__a" href="{% url 'index' %}">Início</a></li>
+                <li class="nav__li"><a class="nav__a" href="{% url 'topics' %}">Tópicos</a></li>
+                {% if user.is_authenticated %}
+                    <li class="nav__li">Olá, {{ user.username }}</li>
+                    <li class="nav__li"><a class="nav__a" href="{% url 'logout' %}">Sair</a></li>
+                {% else %}
+                    <li class="nav__li"><a class="nav__a" href="{% url 'login' %}">Entrar</a></li>
+                    <li class="nav__li"><a class="nav__a" href="{% url 'register' %}">Registrar</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
         <main>
             <div>
                 <p>
-                    <a href="{% url 'topic' topic.id %}">{{ topic }}</a>            
+                    <a class="nav__a" href="{% url 'topic' topic.id %}">{{ topic }}</a>            
                 </p>
                 <p>Editar anotação:</p>
                 <form action="{% url 'edit_entry' entry.id %}" method="post">
@@ -22,7 +38,7 @@
                 </form>
             </div>
         </main>
-    {% endblock content %}
+
 </body>
 
 </html>

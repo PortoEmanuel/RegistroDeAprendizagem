@@ -4,20 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Excluir Tópico</title>
+    <link rel="stylesheet" href="/static/css/components/header.css">
+    <link rel="stylesheet" href="/static/css/components/hero.css">
+    <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
-    {% extends "register/base.html" %}
-    {% block content %}
+    <header class="header">
+        <span class="header__logo">Diário Digital</span>
+        <nav>
+            <ul class="nav__ul">
+                <li class="nav__li"><a class="nav__a" href="{% url 'index' %}">Início</a></li>
+                <li class="nav__li"><a class="nav__a" href="{% url 'topics' %}">Tópicos</a></li>
+                {% if user.is_authenticated %}
+                    <li class="nav__li">Olá, {{ user.username }}</li>
+                    <li class="nav__li"><a class="nav__a" href="{% url 'logout' %}">Sair</a></li>
+                {% else %}
+                    <li class="nav__li"><a class="nav__a" href="{% url 'login' %}">Entrar</a></li>
+                    <li class="nav__li"><a class="nav__a" href="{% url 'register' %}">Registrar</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
     <div>
-        <h1>Excluir Tópico</h1>
+        <h1>Excluir Tópico?</h1>
         <p>Tem certeza de que deseja excluir o tópico "{{ topic }}"?</p>
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
             <button type="submit">Excluir</button>
-            <a href="{% url 'topics' %}">Cancelar</a>
+            <button><a class="nav__a" href="{% url 'topics' %}">Cancelar</a></button>
         </form>
     </div>
-    {% endblock content %}
+
 </body>
 </html>

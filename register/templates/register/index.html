@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/static/css/components/hero.css">
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
-<body>
+<body >
     <header class="header">
         <span class="header__logo">Diário Digital</span>
         <nav>
@@ -30,17 +30,14 @@
             <span class="hero__up-text">Comece agora</span>
             <h1 class="hero__title">Bem-vindo ao meu registro de apendizagem</h1>     
             <h2 class="hero__description">Aqui é possível criar tópicos e escrever suas anotações.</h2>
-            <button class="hero__btn">Descubra</button>
+            <a href="{% url 'descubra' %}"><button class="hero__btn"><a class="nav__a" href="{% url 'descubra' %}">Descubra</a></button></a>
         </div>
         <div class="hero__right">
             <img class="hero__img" src="/static/img/img1-removebg-preview.png" alt="imagem de anotaçoes">
-
         </div>
     </section>
-    <div class="container" >
-        <footer class="footer" ><p>Todos direitos reservados <a class="nav__a"  href="https://github.com/PortoEmanuel">Emanuel Porto</a></p></footer>
+    <div>
+        <footer class="footer__topic" ><p>Todos direitos reservados <a class="nav__a"  href="https://github.com/PortoEmanuel">Emanuel Porto</a></p></footer>
     </div>
 </body>
-
-
 </html>

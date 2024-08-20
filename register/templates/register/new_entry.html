@@ -4,21 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nova anotação</title>
+    <link rel="stylesheet" href="/static/css/components/header.css">
+    <link rel="stylesheet" href="/static/css/components/hero.css">
+    <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
-    {% extends "register/base.html" %}
-    {% block content %}
-        <div>
+    <header class="header">
+        <span class="header__logo">Diário Digital</span>
+        <nav>
+            <ul class="nav__ul">
+                <li class="nav__li"><a class="nav__a" href="{% url 'index' %}">Início</a></li>
+                <li class="nav__li"><a class="nav__a" href="{% url 'topics' %}">Tópicos</a></li>
+                {% if user.is_authenticated %}
+                    <li class="nav__li">Olá, {{ user.username }}</li>
+                    <li class="nav__li"><a class="nav__a" href="{% url 'logout' %}">Sair</a></li>
+                {% else %}
+                    <li class="nav__li"><a class="nav__a" href="{% url 'login' %}">Entrar</a></li>
+                    <li class="nav__li"><a class="nav__a" href="{% url 'register' %}">Registrar</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+        <span class="hero__entry">
             <p>
-                <a href="{% url 'topic' topic.id %}">{{topic}}</a>
+                <a class="nav__a" href="{% url 'topic' topic.id %}">{{topic}}:</a>
             </p>
-            <p>Adicione uma nova entrada: </p>
-            <form action="{% url 'new_entry' topic.id %}" method="post">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button name="submit">Adicionar</button>
-            </form>
+            <p>
+                Adicione uma nova entrada:
+            </p>
+        </span>
+            <div>
+                <form action="{% url 'new_entry' topic.id %}" method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button name="submit">Adicionar</button>
+                </form>
         </div>
-    {% endblock content %}
 </body>
 </html>
