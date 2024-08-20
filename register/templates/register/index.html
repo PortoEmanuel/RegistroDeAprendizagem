@@ -3,38 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Registro de Aprendizagem</title>
-    <style>
-        .caixa {
-            border: 1px solid #ccc; /* Borda leve */
-            padding: 20px; /* Espaço interno */
-            margin: 20px; /* Espaço externo */
-            border-radius: 8px; /* Cantos arredondados */
-            background-color: #f9f9f9; /* Cor de fundo */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
-        }
-    </style>
+    <title>Diário Digital</title>
+    <link rel="stylesheet" href="/static/css/components/header.css">
+    <link rel="stylesheet" href="/static/css/components/hero.css">
+    <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
-    {% extends "register/base.html" %}
-    {% block content %}
-        <div class="caixa">
-            <p>Este é meu registro de aprendizagem.</p>
-            <p>Aqui é possível criar tópicos e escrever anotações.</p>        
+    <header class="header">
+        <span class="header__logo">Diário Digital</span>
+        <nav>
+            <ul class="nav__ul">
+                <li class="nav__li"><a class="nav__a" href="{% url 'index' %}">Início</a></li>
+                <li class="nav__li"><a class="nav__a" href="{% url 'topics' %}">Tópicos</a></li>
+                {% if user.is_authenticated %}
+                    <li class="nav__li">Olá, {{ user.username }}</li>
+                    <li class="nav__li"><a class="nav__a" href="{% url 'logout' %}">Sair</a></li>
+                {% else %}
+                    <li class="nav__li"><a class="nav__a" href="{% url 'login' %}">Entrar</a></li>
+                    <li class="nav__li"><a class="nav__a" href="{% url 'register' %}">Registrar</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    <section class="hero">
+        <div class="hero__left">
+            <span class="hero__up-text">Comece agora</span>
+            <h1 class="hero__title">Bem-vindo ao meu registro de apendizagem</h1>     
+            <h2 class="hero__description">Aqui é possível criar tópicos e escrever suas anotações.</h2>
+            <button class="hero__btn">Descubra</button>
         </div>
-        <div class="caixa">
-            <h3>Você tem alguma sugestão? Entre em contato.</h3>
-            <p>
-                <ul>Email:
-                    <li>emanuelporto.py@gmail.com</li>
-                    GitHub:
-                    <li>github.com/PortoEmanuel</li>
-                    Canal no Discord:
-                    <li><a href="https://discord.gg/vnc47uJe">Programação e Tecnologia</a></li>
-                </ul>
-            </p>
+        <div class="hero__right">
+            <img class="hero__img" src="/static/img/img1-removebg-preview.png" alt="imagem de anotaçoes">
 
         </div>
-    {% endblock content %}
+    </section>
+    <div class="container" >
+        <footer class="footer" ><p>Todos direitos reservados <a class="nav__a"  href="https://github.com/PortoEmanuel">Emanuel Porto</a></p></footer>
+    </div>
 </body>
+
+
 </html>

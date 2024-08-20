@@ -4,47 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tópico</title>
-    <style>
-        .caixa {
-            border: 1px solid #ccc; /* Borda leve */
-            padding: 20px; /* Espaço interno */
-            margin: 20px; /* Espaço externo */
-            border-radius: 8px; /* Cantos arredondados */
-            background-color: #f9f9f9; /* Cor de fundo */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
-        }
-    </style>
+    <link rel="stylesheet" href="/static/css/components/header.css">
+    <link rel="stylesheet" href="/static/css/components/hero.css">
+    <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
-    {% extends "register/base.html" %}
-
-    {% block content %}
-        <div class="caixa">
-            <p>Tópico: {{ topic }} </p>
-            <p>Anotações: </p>
-            <ul>
-                {% for entry in entries %}
-                <li>
-                    <p>{{ entry.date_added | date:'M d, Y H:i' }}</p>
-                    <p>{{ entry.text | linebreaks }}</p>
-                    <p>
-                        <a href="{% url 'edit_entry' entry.id %}">Editar anotação</a> -
-                        <a href="{% url 'delete_entry' entry.id %}">
-                        Excluir
-                    </a>
-                    </p>
-                </li>
-                {% empty %}
-                <li>
-                    Não há registro.
-                </li>
-                {% endfor %}
+    <header class="header">
+        <span class="header__logo">Diário Digital</span>
+        <nav>
+            <ul class="nav__ul">
+                <li class="nav__li"><a class="nav__a" href="{% url 'index' %}">Início</a></li>
+                <li class="nav__li"><a class="nav__a" href="{% url 'topics' %}">Tópicos</a></li>
+                {% if user.is_authenticated %}
+                    <li class="nav__li">Olá, {{ user.username }}</li>
+                    <li class="nav__li"><a class="nav__a" href="{% url 'logout' %}">Sair</a></li>
+                {% else %}
+                    <li class="nav__li"><a class="nav__a" href="{% url 'login' %}">Entrar</a></li>
+                    <li class="nav__li"><a class="nav__a" href="{% url 'register' %}">Registrar</a></li>
+                {% endif %}
             </ul>
-            <p>
-                <a href="{% url 'new_entry' topic.id %}">Adicionar nova anotação</a>
-            </p>
+        </nav>
+    </header>
+        <main>
+            <div>
+                <p>Tópico: {{ topic }} </p>
+                <p>Anotações: </p>
+                <ul>
+                    {% for entry in entries %}
+                        <li>
+                            <p>{{ entry.date_added | date:'M d, Y H:i' }}</p>
+                            <p>{{ entry.text | linebreaks }}</p>
+                            <p>
+                                <button class="hero__btn-ex"><a class="nav__a" href="{% url 'edit_entry' entry.id %}">Editar anotação</a></button> 
+                                <button class="hero__btn-ex"><a class="nav__a" href="{% url 'delete_entry' entry.id %}">Excluir</a></button>
+                            </p>
+                        </li>
+                    {% empty %}
+                        <li>Não há registro.</li>
+                    {% endfor %}
+                </ul>
+                <p>
+                    <button class="hero__btn"><a class="nav__a" href="{% url 'new_entry' topic.id %}">Adicionar nova anotação</a></button>
+                </p>
+            </div>
+        </main>
+        <div class="container" >
+            <footer class="footer" ><p>Todos direitos reservados <a class="nav__a"  href="https://github.com/PortoEmanuel">Emanuel Porto</a></p></footer>
         </div>
-    {% endblock content %}
 
 </body>
 </html>

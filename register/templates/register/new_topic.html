@@ -4,66 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Novo Tópico</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif; /* Fonte básica para o corpo */
-            line-height: 1.6; /* Melhora a legibilidade do texto */
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4; /* Cor de fundo leve */
-        }
-        .caixa {
-            border: 1px solid #ccc; /* Borda leve */
-            padding: 20px; /* Espaço interno */
-            margin: 20px; /* Espaço externo */
-            border-radius: 8px; /* Cantos arredondados */
-            background-color: #f9f9f9; /* Cor de fundo */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
-        }
-        h1 {
-            color: #333; /* Cor do título */
-            margin-top: 0;
-        }
-        p {
-            margin: 20px 0;
-        }
-        form {
-            display: flex;
-            flex-direction: column;
-        }
-        button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            background-color: #007bff;
-            color: #fff;
-            cursor: pointer;
-            font-size: 16px;
-            margin-top: 10px;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-        .meio {
-            text-align: center;
-
-        }
-    </style>
+    <link rel="stylesheet" href="/static/css/components/header.css">
+    <link rel="stylesheet" href="/static/css/components/hero.css">
+    <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
-    {% extends "register/base.html" %}
-    {% block content %}
-    <div class="caixa">
+    <header class="header">
+        <span class="header__logo">Diário Digital</span>
+        <nav>
+            <ul class="nav__ul">
+                <li class="nav__li"><a class="nav__a" href="{% url 'index' %}">Início</a></li>
+                <li class="nav__li"><a class="nav__a" href="{% url 'topics' %}">Tópicos</a></li>
+                {% if user.is_authenticated %}
+                    <li class="nav__li">Olá, {{ user.username }}</li>
+                    <li class="nav__li"><a class="nav__a" href="{% url 'logout' %}">Sair</a></li>
+                {% else %}
+                    <li class="nav__li"><a class="nav__a" href="{% url 'login' %}">Entrar</a></li>
+                    <li class="nav__li"><a class="nav__a" href="{% url 'register' %}">Registrar</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    <div>
         <h1>Adicionar Novo Tópico</h1>
-        <div class="meio">
-            <p>Preencha o formulário abaixo para adicionar um novo tópico.</p>
-            <form class="formulario" action="{% url 'new_topic' %}" method="post">
+        <div>
+            <p>Preencha o nome do tópico.</p>
+            <form action="{% url 'new_topic' %}" method="post">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <button type="submit">Adicionar</button>
+                <button class="hero__btn" type="submit">Adicionar</button>
             </form>
         </div>
     </div>
-    {% endblock content %}
+    <div class="container" >
+        <footer class="footer" ><p>Todos direitos reservados <a class="nav__a"  href="https://github.com/PortoEmanuel">Emanuel Porto</a></p></footer>
+    </div>
 </body>
 </html>

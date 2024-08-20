@@ -1,22 +1,28 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar entrada</title>
+    <title>Editar Entrada</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     {% extends "register/base.html" %}
     {% block content %}
-        <p>
-            <a href="{% url 'topic' topic.id %}">{{topic}}</a>            
-        </p>
-        <p>Editar anotação:</p>
-        <form action="{% url 'edit_entry' entry.id %}" method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button name="submit" >Salvar</button>
-        </form>
+        <main>
+            <div>
+                <p>
+                    <a href="{% url 'topic' topic.id %}">{{ topic }}</a>            
+                </p>
+                <p>Editar anotação:</p>
+                <form action="{% url 'edit_entry' entry.id %}" method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button name="submit">Salvar</button>
+                </form>
+            </div>
+        </main>
     {% endblock content %}
 </body>
+
 </html>

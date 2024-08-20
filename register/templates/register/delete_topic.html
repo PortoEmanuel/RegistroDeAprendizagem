@@ -4,60 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Excluir Tópico</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif; /* Fonte básica para o corpo */
-            line-height: 1.6; /* Melhora a legibilidade do texto */
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4; /* Cor de fundo leve */
-        }
-        .caixa {
-            border: 1px solid #ccc; /* Borda leve */
-            padding: 20px; /* Espaço interno */
-            margin: 20px; /* Espaço externo */
-            border-radius: 8px; /* Cantos arredondados */
-            background-color: #f9f9f9; /* Cor de fundo */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
-        }
-        h1 {
-            color: #333; /* Cor do título */
-            margin-top: 0;
-        }
-        p {
-            margin: 20px 0;
-        }
-        form {
-            display: flex;
-            flex-direction: column;
-        }
-        button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            background-color: #007bff;
-            color: #fff;
-            cursor: pointer;
-            font-size: 16px;
-            margin-top: 10px;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-        a {
-            text-decoration: none;
-            color: #007bff;
-            margin-top: 10px;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
 </head>
 <body>
     {% extends "register/base.html" %}
     {% block content %}
-    <div class="caixa">
+    <div>
         <h1>Excluir Tópico</h1>
         <p>Tem certeza de que deseja excluir o tópico "{{ topic }}"?</p>
         <form method="post">

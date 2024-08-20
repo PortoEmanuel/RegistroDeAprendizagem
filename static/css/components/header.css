@@ -1,0 +1,30 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding-block: 1.25rem;
+    padding-inline: 1.25rem;
+}
+
+.header__logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.nav__ul {
+    display: flex;
+    list-style: none;
+    gap: 1.8rem;
+}
+
+.nav__a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.nav__ex {
+
+    list-style: none;
+
+}

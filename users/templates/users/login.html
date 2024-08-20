@@ -4,38 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <style>
-        .caixa {
-            border: 1px solid #ccc; /* Borda leve */
-            padding: 20px; /* Espaço interno */
-            margin: 20px; /* Espaço externo */
-            border-radius: 8px; /* Cantos arredondados */
-            background-color: #f9f9f9; /* Cor de fundo */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
-        }
-        .meio {
-            text-align: center;
-        }
-    </style>
+    <link rel="stylesheet" href="/static/css/components/header.css">
+    <link rel="stylesheet" href="/static/css/components/hero.css">
+    <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
-    {% extends "register/base.html" %}
-    <div class="caixa">
-        {% block content %}
+    <header class="header">
+        <span class="header__logo">Diário Digital</span>
+        <nav>
+            <ul class="nav__ul">
+                <li class="nav__li"><a class="nav__a" href="{% url 'index' %}">Início</a></li>
+                <li class="nav__li"><a class="nav__a" href="{% url 'topics' %}">Tópicos</a></li>
+                {% if user.is_authenticated %}
+                    <li class="nav__li">Olá, {{ user.username }}</li>
+                    <li class="nav__li"><a class="nav__a" href="{% url 'logout' %}">Sair</a></li>
+                {% else %}
+                    <li class="nav__li"><a class="nav__a" href="{% url 'login' %}">Entrar</a></li>
+                    <li class="nav__li"><a class="nav__a" href="{% url 'register' %}">Registrar</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div clas="hero__left">
             {% if form.erros %}
                 <p>Seu login e senha estão incorretos. Por favor tente novamente!</p>
             {% endif %}
-            <div class="caixa">
-                <div class="meio">
+            <div>
+                <h3 class="hero__up-text">Login</h3>
+                <p class="hero__description">Entre com nome de usuário e senha.</p>
+                <div>
                     <form action="{% url 'login' %}" method="post">
                         {% csrf_token %}
                         {{ form.as_p }}
-                        <button name="submit">Entrar</button>
+                        <button class="hero__btn" name="submit">Entrar</button>
                         <input type="hidden" name="next" value="{% url 'index' %}"/>
                     </form>
                 </div>
             </div>
-        {% endblock content %}
+
+    </div>
+    </section>
+    <div class="container" >
+        <footer class="footer" ><p>Todos direitos reservados <a class="nav__a"  href="https://github.com/PortoEmanuel">Emanuel Porto</a></p></footer>
     </div>
 </body>
 </html>
