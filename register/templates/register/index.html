@@ -15,12 +15,14 @@
             <ul class="nav__ul">
                 <li class="nav__li"><a class="nav__a" href="{% url 'index' %}">Início</a></li>
                 <li class="nav__li"><a class="nav__a" href="{% url 'topics' %}">Tópicos</a></li>
+                <li class="nav__li" ><a class="nav__a" href="{% url 'chat' %}">Chat</a></li>
                 {% if user.is_authenticated %}
                     <li class="nav__li">Olá, {{ user.username }}</li>
                     <li class="nav__li"><a class="nav__a" href="{% url 'logout' %}">Sair</a></li>
                 {% else %}
                     <li class="nav__li"><a class="nav__a" href="{% url 'login' %}">Entrar</a></li>
                     <li class="nav__li"><a class="nav__a" href="{% url 'register' %}">Registrar</a></li>
+                    
                 {% endif %}
             </ul>
         </nav>
@@ -31,6 +33,7 @@
             <h1 class="hero__title">Bem-vindo ao meu registro de apendizagem</h1>     
             <h2 class="hero__description">Aqui é possível criar tópicos e escrever suas anotações.</h2>
             <a href="{% url 'descubra' %}"><button class="hero__btn"><a class="nav__a" href="{% url 'descubra' %}">Descubra</a></button></a>
+            
         </div>
         <div class="hero__right">
             <img class="hero__img" src="/static/img/img1-removebg-preview.png" alt="imagem de anotaçoes">

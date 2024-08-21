@@ -105,3 +105,6 @@ def delete_entry(request, entry_id):
 def descubra(request):
     
     return render(request, 'register/descubra.html')
+
+def chat_view(request):
+    return render(request, 'chat/chat.html')
